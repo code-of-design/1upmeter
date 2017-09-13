@@ -1,53 +1,34 @@
 <?php
   include("env.php"); // 環境設定.
-?>
-<?php
-  /*
-  date_default_timezone_set('Asia/Tokyo'); // タイムゾーン.
-  $file_name = "oneup.json"; // ファイル名.
-  $oneup_array = array(); // oneup配列.
 
-  // フォームのPOSTを取得する.
-  $oneup_txt = $_POST["oneup-text"];
-  $oneup_date = strftime("%G/%m/%d %H:%M");
-  $oneup_current_array = array(
+  date_default_timezone_set(TIMEZONE); // タイムゾーン.
+  $oneup_array = array(); // 1up配列.
+
+  // 1up POST.
+  $oneup_txt = $_POST["oneup-txt"]; // 1up本文.
+  $oneup_date = strftime("%G/%m/%d %H:%M"); // 1up時間.
+  $oneup_post = array(
     'txt' => $oneup_txt,
     'date' => $oneup_date
   );
 
   // 1upファイルを生成する.
-  if (!file_exists($file_name)) {
-    touch($file_name);
+  if (!file_exists(ONEUP_FILE_PATH)) {
+    touch(ONEUP_FILE_PATH);
   }
 
   // 1upファイルを読み込む.
-  $oneup = file_get_contents($file_name);
-  // JSON形式をデコードする.
+  $oneup = file_get_contents(ONEUP_FILE_PATH);
+  // JSONを1up配列にデコードする.
   $oneup_array = json_decode($oneup);
-
-  // 1upファイルに書き込む.
-  $oneup_array[count($oneup_array)] = $oneup_current_array;
-  // JSON形式にエンコードする.
+  // 1up POSTを1up配列に追加する.
+  $oneup_array[count($oneup_array)] = $oneup_post;
+  // 1ip配列をJSONにエンコードする.
   $oneup_json = json_encode($oneup_array);
-  file_put_contents($file_name, $oneup_json);
+  // 1upファイルに書き込む.
+  file_put_contents(ONEUP_FILE_PATH, $oneup_json);
 
-  // 1upファイルを表示する.
-  var_dump($oneup_array);
-
-  // INDEXへ戻る.
-  echo "<a href='index.php'><p>#1UPMETER</p></a>";
-  */
+  // リダイレクト.
+  header("Location: index.php");
+  exit();
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form class="oneup-form" action="create_oneup.php" method="post">
-      <textarea class="oneup-text" name="oneup-text" rows="4" cols="72" placeholder="今日の成長を記録しよう。"></textarea>
-      <input class="oneup-submit" type="submit" name="oneup-submit" value="1UP">
-    </form>
-  </body>
-</html>

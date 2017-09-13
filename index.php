@@ -6,20 +6,12 @@
   <head>
     <meta charset="utf-8">
     <title><?php echo TITLE; ?></title>
-    <style>
-      textarea {
-        resize: none;
-      }
-      .oneup-text{
-        display: block;
-      }
-    </style>
   </head>
   <body>
     <div class="page">
       <header class="page-header">
-        <a href="/"><h1 class="title"><?php echo TITLE; ?></h1></a>
-        <button class="oneup-btn" type="button" name="oneup-btn">1UP</button>
+        <a href="index.php"><?php echo TITLE; ?></a>
+        <a href="oneup_form.php">1UP</a>
       </header>
       <!-- 1UP一覧 -->
       <div class="page-content">
