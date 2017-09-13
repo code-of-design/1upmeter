@@ -1,4 +1,8 @@
 <?php
+  include("env.php"); // 環境設定.
+?>
+<?php
+  /*
   date_default_timezone_set('Asia/Tokyo'); // タイムゾーン.
   $file_name = "oneup.json"; // ファイル名.
   $oneup_array = array(); // oneup配列.
@@ -30,15 +34,20 @@
   // 1upファイルを表示する.
   var_dump($oneup_array);
 
-  /*
-  {
-    {
-      txt: "hello,php",
-      date: "2017/09/12 16:10"
-    }
-  }
-  */
-
   // INDEXへ戻る.
   echo "<a href='index.php'><p>#1UPMETER</p></a>";
+  */
 ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="oneup-form" action="create_oneup.php" method="post">
+      <textarea class="oneup-text" name="oneup-text" rows="4" cols="72" placeholder="今日の成長を記録しよう。"></textarea>
+      <input class="oneup-submit" type="submit" name="oneup-submit" value="1UP">
+    </form>
+  </body>
+</html>
